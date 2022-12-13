@@ -1,0 +1,29 @@
+<html>
+    <head></head>
+    <body>
+        <p> This is test API</p>
+        <button onclick="getStudentsData()">Get Data</button>
+        <p id="get"></p>
+        <script>
+            const getStudentsData = () => {
+                var apiUrl="http://localhost:5000/get-todo";
+                fetch(apiUrl).then((res) => {
+                    return res.json();
+                })
+                .then((res) => {
+                    console.log(...res);
+                    // for(let key in res){
+                    //     var arr=res[key];
+                    //     console.log("{");
+                    //     for(let a in arr){
+                    //         console.log("\t"+a+" : "+arr[a]);
+                    //     }
+                    //     console.log("}");
+                    // }
+                    
+                    // document.getElementById("get").innerHTML=res;
+                });
+            }
+        </script>
+    </body>
+</html>
