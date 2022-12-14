@@ -5,8 +5,8 @@ const getAllTodos = async(request,response) => {
     if(_id){
         var allTodos = await ToDo.findById(_id); 
     }else{
-        // var allTodos= await ToDo.find();
-        var allTodos= await ToDo.find({},{_id:0});
+        var allTodos= await ToDo.find();
+        // var allTodos= await ToDo.find({},{_id:0});
     }
     return response.json(allTodos);        
 };
@@ -29,7 +29,7 @@ const patchTodo = async ( request, response) => {
     }
     var data= request.body;
     if(data1.isCompleted == true){
-        await ToDo.findByIdAndUpdate(_id,data);
+        await ToDo.findOneAndUpdate(_id,data);
         return response.json({status : "ToDo Patched"});
     }
     return response.json({status : "ToDo Not Patched"});
